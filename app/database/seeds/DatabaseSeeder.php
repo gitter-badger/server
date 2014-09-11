@@ -23,11 +23,11 @@ class DatabaseSeeder extends Seeder {
 		mkdir(__DIR__ . "/../../../photos/");
 		mkdir(__DIR__ . "/../../../photos/1/");
 
-		copy(__DIR__ . "/../../tests/_data/28.jpg", __DIR__ . "/../../../photos/1/c02c99ac35c3b6f9c698ad093dd61148f0f7bce4.jpg");
-		copy(__DIR__ . "/../../tests/_data/HPIM1541.JPG", __DIR__ . "/../../../photos/1/6cef2ab8a66ed404a0c8c1c57028afcf7fb77b0d.jpg");
-		copy(__DIR__ . "/../../tests/_data/HPIM2997.JPG", __DIR__ . "/../../../photos/1/d0ec4095a35089f3650b0249270851096382f7d7.jpg");
-		copy(__DIR__ . "/../../tests/_data/img_0171.jpg", __DIR__ . "/../../../photos/1/9067826aa3f2aa41542574ecd6bd1b1124d64c18.jpg");
-		copy(__DIR__ . "/../../tests/_data/p1120151.jpg", __DIR__ . "/../../../photos/1/df367369e8525c36def65980c997ecb721f2f7f9.jpg");
+		copy(__DIR__ . "/../tests/_data/28.jpg", __DIR__ . "/../../../photos/1/c02c99ac35c3b6f9c698ad093dd61148f0f7bce4.jpg");
+		copy(__DIR__ . "/../tests/_data/HPIM1541.JPG", __DIR__ . "/../../../photos/1/6cef2ab8a66ed404a0c8c1c57028afcf7fb77b0d.jpg");
+		copy(__DIR__ . "/../tests/_data/HPIM2997.JPG", __DIR__ . "/../../../photos/1/d0ec4095a35089f3650b0249270851096382f7d7.jpg");
+		copy(__DIR__ . "/../tests/_data/img_0171.jpg", __DIR__ . "/../../../photos/1/9067826aa3f2aa41542574ecd6bd1b1124d64c18.jpg");
+		copy(__DIR__ . "/../tests/_data/p1120151.jpg", __DIR__ . "/../../../photos/1/df367369e8525c36def65980c997ecb721f2f7f9.jpg");
 
 		Photo::create(array(
 			'id' => '1',
