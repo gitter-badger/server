@@ -11,27 +11,6 @@ class AutheticationCest
 	{
 	}
 
-	public function tryToGetToTheLoginPage(AcceptanceTester $I)
-	{
-		$I->wantTo('check the root page');
-		$I->amOnPage('/');
-		$I->see('login');
-
-		$I->click('login');
-		$I->seeCurrentUrlEquals('/login');
-	}
-
-	public function tryToSeeTheLoginForm(AcceptanceTester $I)
-	{
-		$I->wantTo('see the login form');
-		$I->amOnPage('/login');
-
-		$I->fillField('username', 'Admin');
-		$I->fillField('password', 'PhotoTresor');
-
-		$I->click('Login');
-	}
-
 	public function tryToLoginButItFails(AcceptanceTester $I)
 	{
 		$params = array('username' => 'darthvader', 'password' => 'iamyourfather');
