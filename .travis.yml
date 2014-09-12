@@ -17,6 +17,7 @@ before_script:
   - travis_retry composer install --prefer-source --no-interaction --dev
   - php artisan migrate --seed --env=travis
   - php artisan serve --env=travis &
+  - sleep 5 # give it some time to start
   - php vendor/bin/codecept build
 
 script:
