@@ -64,7 +64,7 @@ class PhotosCest
 		$I->seeResponseCodeIs(201);
 		$I->seeResponseContainsJson($photo);
 
-		$I->seeFileFound('2d56023c13b9ccf2e4bc086cb9abee7beac12152.jpg', __DIR__ . '/../../../photos/1');
+		$I->seeFileFound('2d56023c13b9ccf2e4bc086cb9abee7beac12152.jpg', __DIR__ . '/../../photos/1');
 	}
 
 	public function tryToUploadPhotoTwice(AcceptanceTester $I)

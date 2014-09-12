@@ -64,7 +64,9 @@ class PhotosController extends \BaseController {
 					'captured_at' => $interventionImage->exif()['DateTimeOriginal']
 				]);
 
-				$inputImage->move(Config::get('PhotoTresor.storage') . "/$user_id/", "$photo->file_sha1.jpg");
+				$file_path = Config::get('phototresor.storage') . "/$user_id/";
+				$file_name = "$photo->file_sha1.jpg";
+				$inputImage->move($file_path, $file_name);
 
 				return Response::json($photo, 201);
 			}
