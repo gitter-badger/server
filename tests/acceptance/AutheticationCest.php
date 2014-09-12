@@ -22,12 +22,12 @@ class AutheticationCest
 
 	public function tryToLoginAndSucceed(AcceptanceTester $I)
 	{
-		$params = array('username' => 'Admin ', 'password' => 'PhotoTresor');
+		$params = array('username' => 'User ', 'password' => 'PhotoTresor');
 		$I->sendPOST('authenticate', $params);
 
 		$I->seeResponseCodeIs(200);
 		$I->seeResponseContainsJson(array('id' => 1));
-		$I->seeResponseContainsJson(array('email' => 'admin@PhotoTresor.org'));
+		$I->seeResponseContainsJson(array('email' => 'user@phototresor.org'));
 		$I->seeResponseContainsJson(array('active' => true));
 	}
 

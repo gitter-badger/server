@@ -15,7 +15,7 @@ class PhotosCest
 
 	private function authenticate(AcceptanceTester $I)
 	{
-		$params = array('username' => 'Admin', 'password' => 'PhotoTresor');
+		$params = array('username' => 'User', 'password' => 'PhotoTresor');
 		$I->sendPOST('authenticate', $params);
 	}
 
