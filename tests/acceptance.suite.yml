@@ -17,3 +17,6 @@ modules:
             url: 'http://localhost:8000/'
         REST:
             url: 'http://localhost:8000/'
+        Db:
+            populate: 'true'
+            cleanup: 'true'
