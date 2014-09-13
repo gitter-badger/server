@@ -10,7 +10,7 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'phototresor_test',
+			'database'  => 'phototresor',
 			'username'  => 'root',
 			'password'  => '',
 			'charset'   => 'utf8',
@@ -19,7 +19,5 @@ return array(
 		),
 
 	),
-
-	'migrations' => 'migrations',
 
 );
