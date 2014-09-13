@@ -10,17 +10,11 @@ class PhotosCest
         $I->refreshPhotosDirectory($I);
 	}
 
-	private function authenticate(AcceptanceTester $I)
-	{
-		$params = ['username' => 'User', 'password' => 'PhotoTresor'];
-		$I->sendPOST('authenticate', $params);
-	}
-
 	public function tryToGetPhotos(AcceptanceTester $I)
 	{
-		$this->authenticate($I);
+		$I->authenticate($I);
 
-		$I->sendGET(self::$resourceName);
+        $I->sendGET(self::$resourceName);
 
 		$I->seeResponseCodeIs(200);
 		$I->seeResponseContainsJson(['id' => 1, 'file_name' => '28.jpg']);
@@ -32,7 +26,7 @@ class PhotosCest
 
 	public function tryToUploadPhotoWithoutFile(AcceptanceTester $I)
 	{
-		$this->authenticate($I);
+		$I->authenticate($I);
 
 		$I->sendPOST(self::$resourceName);
 
@@ -42,7 +36,7 @@ class PhotosCest
 
     public function tryToGetAPhotoByID(AcceptanceTester $I)
     {
-        $this->authenticate($I);
+        $I->authenticate($I);
 
         $I->sendGET(self::$resourceName . '/1');
 
@@ -64,7 +58,7 @@ class PhotosCest
 
     public function tryToDeletePhotoByID(AcceptanceTester $I)
     {
-        $this->authenticate($I);
+        $I->authenticate($I);
 
         $I->seeInDatabase('photos', ['id' => 1]);
         $I->seeFileFound('tests/_photos/1/c02c99ac35c3b6f9c698ad093dd61148f0f7bce4.jpg');
