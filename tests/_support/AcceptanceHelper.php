@@ -44,7 +44,8 @@ class AcceptanceHelper extends \Codeception\Module
      */
     public function refreshPhotosDirectory($I)
     {
-        $I->cleanDir('tests/_photos/');
+        $I->deleteDir('tests/_photos/');
+        $this->createDirectory('/../_photos');
         $this->createDirectory('/../_photos/1');
 
         foreach($this->photos as $photo)
