@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\File;
+
 class PhotosController extends \BaseController {
 
 	function __construct() {
@@ -97,7 +99,11 @@ class PhotosController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+        $photo = Photo::find($id);
+        $photoPath = Config::get('phototresor.storage') . "$photo->user_id/$photo->file_sha1.jpg";
+
+        File::delete($photoPath);
+		return Photo::destroy($id);
 	}
 
 }

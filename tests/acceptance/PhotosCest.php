@@ -5,12 +5,9 @@ class PhotosCest
 {
 	public static $resourceName = 'photos';
 
-	public function _before()
+	public function _before(AcceptanceTester $I)
 	{
-	}
-
-	public function _after()
-	{
+        $I->refreshPhotosDirectory($I);
 	}
 
 	private function authenticate(AcceptanceTester $I)
@@ -63,5 +60,20 @@ class PhotosCest
 
         $I->seeResponseCodeIs(200);
         $I->seeResponseContainsJson($photo);
+    }
+
+    public function tryToDeletePhotoByID(AcceptanceTester $I)
+    {
+        $this->authenticate($I);
+
+        $I->seeInDatabase('photos', ['id' => 1]);
+        $I->seeFileFound('tests/_photos/1/c02c99ac35c3b6f9c698ad093dd61148f0f7bce4.jpg');
+
+        $I->sendDELETE(self::$resourceName . '/1');
+
+        $I->seeResponseCodeIs(200);
+        $I->dontSeeInDatabase('photos', ['id' => 1]);
+        $I->dontSeeFileFound('tests/_photos/1/c02c99ac35c3b6f9c698ad093dd61148f0f7bce4.jpg');
+
     }
 }
