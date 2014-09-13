@@ -18,7 +18,7 @@ before_script:
   - chmod -R 777 app/storage/
   - php artisan migrate --seed --env=travis
   - php artisan serve --env=travis &
-  - sleep 5 # give it some time to start
+  - sleep 5 # give artisan serve some time to start
   - php vendor/bin/codecept build
 
 script:
