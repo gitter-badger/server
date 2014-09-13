@@ -27,6 +27,7 @@ $app = new Illuminate\Foundation\Application;
 $env = $app->detectEnvironment(array(
 
 	'testing' => array('homestead'),
+    'testing' => array('testing-worker-linux*')
 
 ));
 
