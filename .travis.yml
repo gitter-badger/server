@@ -25,3 +25,4 @@ script:
 
 after_failure:
   - cat app/storage/logs/laravel.log
+  - cat tests/_output/*
