@@ -12,7 +12,7 @@ matrix:
   fast_finish: true
 
 before_script:
-  - mysql -e 'create database phototresor;'
+  - mysql -e 'create database phototresor_testing;'
   - travis_retry composer self-update
   - travis_retry composer install --prefer-source --no-interaction --dev
   - chmod -R 777 app/storage/
