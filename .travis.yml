@@ -22,3 +22,6 @@ before_script:
 
 script:
   - php vendor/bin/codecept run
+
+after_failure:
+  - cat app/storage/logs/laravel.log
