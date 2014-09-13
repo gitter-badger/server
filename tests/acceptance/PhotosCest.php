@@ -58,9 +58,7 @@ class PhotosCest
             "width" => 800,
             "height" => 600,
             "user_id" => 1,
-            "captured_at" => "2007-08-04 02:22:04",
-            "created_at" => "2014-09-13 17:32:47",
-            "updated_at" => "2014-09-13 17:32:47"
+            "captured_at" => "2007-08-04 02:22:04"
         ];
 
         $I->seeResponseCodeIs(200);
