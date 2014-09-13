@@ -15,6 +15,7 @@ before_script:
   - mysql -e 'create database phototresor_test;'
   - travis_retry composer self-update
   - travis_retry composer install --prefer-source --no-interaction --dev
+  - chmod -R 777 app/storage/
   - php artisan migrate --seed --env=travis
   - php artisan serve --env=travis &
   - sleep 5 # give it some time to start
