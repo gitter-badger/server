@@ -20,6 +20,6 @@ Route::get('login', array('as' => 'login', 'uses' => 'AuthenticationController@l
 Route::post('authenticate', array('as' => 'authenticate', 'uses' => 'AuthenticationController@authenticate'));
 Route::get('logout', array('as' => 'logout', 'uses' => 'AuthenticationController@logout'));
 
-Route::resource('photos', 'PhotosController');
+Route::resource('photos', 'PhotosController', ['only' => ['index', 'store', 'show', 'update', 'destroy']]);
 
 Route::when('photo/*', 'auth');
