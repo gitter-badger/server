@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Log;
 
 class PhotosController extends \BaseController {
 
@@ -101,6 +102,7 @@ class PhotosController extends \BaseController {
 	{
         $photo = Photo::find($id);
         $photoPath = Config::get('phototresor.storage') . "$photo->user_id/$photo->file_sha1.jpg";
+        Log::debug('Delete Photo: ' . $photoPath);
 
         File::delete($photoPath);
 		return Photo::destroy($id);
