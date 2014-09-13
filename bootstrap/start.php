@@ -24,12 +24,11 @@ $app = new Illuminate\Foundation\Application;
 |
 */
 
-$env = $app->detectEnvironment(array(
+$env = $app->detectEnvironment([
 
-	'testing' => array('homestead'),
-    'testing' => array('testing-worker-linux*')
+	'testing' => ['homestead', 'testing-worker-linux*']
 
-));
+]);
 
 /*
 |--------------------------------------------------------------------------
