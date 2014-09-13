@@ -73,7 +73,7 @@ class PhotosController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		return Photo::find($id);
 	}
 
 	/**
