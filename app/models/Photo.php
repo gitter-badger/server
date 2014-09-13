@@ -25,4 +25,9 @@ class Photo extends Eloquent {
 		'captured_at'
 	);
 
+    public function user()
+    {
+        return $this->belongsTo('User');
+    }
+
 }

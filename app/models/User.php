@@ -21,13 +21,14 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 *
 	 * @var array
 	 */
-	protected $hidden = array('password', 'remember_token');
+	protected $hidden = ['password', 'remember_token'];
 
-	/**
-	 * The active attribute return boolean true instead of mysql 1
-	 *
-	 * @return bool
-	 */
+    /**
+     * The active attribute return boolean true instead of mysql 1
+     *
+     * @param $value
+     * @return bool
+     */
 	public function getActiveAttribute($value)
 	{
 		if ($value == 1) {
@@ -36,5 +37,10 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 		return false;
 	}
+
+    public function photos()
+    {
+        return $this->hasMany('Photo');
+    }
 
 }
