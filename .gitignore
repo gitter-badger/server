@@ -11,6 +11,7 @@ Thumbs.db
 /public/scripts/
 /public/styles/
 /tests/_output/*
+/tests/_photos/
 /tests/acceptance/AcceptanceTester.php
 /tests/functional/FunctionalTester.php
 /tests/unit/UnitTester.php
