@@ -11,6 +11,8 @@
 |
 */
 
+dd(App::environment());
+
 Route::get('/', array('as' => 'root', function()
 {
 	return 'hi';
