@@ -24,6 +24,20 @@ class PhotosCest
 		$I->seeResponseContainsJson(['id' => 5, 'file_name' => 'p1120151.jpg']);
 	}
 
+    /**
+     * @param AcceptanceTester $I
+     */
+    public function tryToGetPhotosExpanedWithUser(AcceptanceTester $I)
+    {
+        $I->authenticate($I);
+
+        $I->sendGET($this->resourceName, ['expand' => 'user']);
+
+        $I->seeResponseCodeIs(200);
+        $I->seeResponseContainsJson(['id' => 1, 'file_name' => '28.jpg']);
+        $I->seeResponseContainsJson(['user' => ['id' => 1, 'username' => 'user']]);
+    }
+
 	public function tryToUploadPhotoWithoutFile(AcceptanceTester $I)
 	{
 		$I->authenticate($I);

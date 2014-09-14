@@ -18,8 +18,14 @@ class PhotosController extends \BaseController {
 	 */
 	public function index()
 	{
-		$photos = Photo::orderBy('captured_at', 'DESC')->get();
-		return Response::apiSuccess($photos);
+		$photos = Photo::orderBy('captured_at', 'DESC');
+
+        if(Input::get('expand') == 'user')
+        {
+            $photos->with('User');
+        }
+
+		return Response::apiSuccess($photos->get());
 	}
 
 	/**
