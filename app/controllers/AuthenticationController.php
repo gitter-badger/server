@@ -8,14 +8,13 @@ class AuthenticationController extends \BaseController {
 	public function authenticate()
 	{
 		$user = array(
-			'username' => strtolower(Input::get('username')),
+			'username' => strtolower(trim(Input::get('username'))),
 			'password' => Input::get('password'),
 			'active' => true
 		);
 
-		if (Auth::attempt($user)) {
+		if (Auth::attempt($user))
 			return Response::apiSuccess(Auth::user());
-		}
 
 		return Response::apiError(array('message' => 'Wrong Credentials'));
 	}
