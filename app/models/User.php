@@ -23,6 +23,8 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 	protected $hidden = ['password', 'remember_token'];
 
+    protected $fillable = ['email', 'username', 'name_first', 'name_last', 'active', 'quota'];
+
     /**
      * The active attribute return boolean true instead of mysql 1
      *
