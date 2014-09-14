@@ -83,9 +83,12 @@ class PhotosController extends \BaseController {
 	 */
 	public function show($id)
 	{
-        try {
+        try
+        {
             return Photo::findOrFail($id);
-        } catch (ModelNotFoundException $e) {
+        }
+        catch (ModelNotFoundException $e)
+        {
             return Response::apiError(['message' => 'Photo not found.'], 404);
         }
 	}
