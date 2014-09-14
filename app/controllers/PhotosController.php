@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Log;
 
@@ -7,7 +8,7 @@ class PhotosController extends \BaseController {
 
 	function __construct() {
 		$this->beforeFilter('auth');
-	}
+    }
 
 	/**
 	 * Display a listing of the resource.
@@ -76,7 +77,11 @@ class PhotosController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		return Photo::find($id);
+        try {
+            return Photo::findOrFail($id);
+        } catch (ModelNotFoundException $e) {
+            return Response::apiError(['message' => 'Photo not found.'], 404);
+        }
 	}
 
 	/**

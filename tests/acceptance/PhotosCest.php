@@ -34,7 +34,7 @@ class PhotosCest
 		$I->seeResponseContainsJson(['message' => 'No file uploaded.']);
 	}
 
-    public function tryToGetAPhotoByID(AcceptanceTester $I)
+    public function tryToGetPhotoByID(AcceptanceTester $I)
     {
         $I->authenticate($I);
 
@@ -54,6 +54,16 @@ class PhotosCest
 
         $I->seeResponseCodeIs(200);
         $I->seeResponseContainsJson($photo);
+    }
+
+    public function tryToNotGetPhotoByID(AcceptanceTester $I)
+    {
+        $I->authenticate($I);
+
+        $I->sendGET($this->resourceName . '/1024');
+
+        $I->seeResponseCodeIs(404);
+        $I->seeResponseContainsJson(['error' => ['message' => 'Photo not found.']]);
     }
 
     public function tryToDeletePhotoByID(AcceptanceTester $I)
