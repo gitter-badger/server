@@ -11,10 +11,14 @@
 |
 */
 
+$RESTful = ['index', 'store', 'show', 'update', 'destroy'];
+
 Route::post('authenticate', array('as' => 'authenticate', 'uses' => 'AuthenticationController@authenticate'));
 Route::get('logout', array('as' => 'logout', 'uses' => 'AuthenticationController@logout'));
 
-Route::resource('users', 'UsersController', ['only' => ['index', 'store', 'show', 'update', 'destroy']]);
-Route::resource('photos', 'PhotosController', ['only' => ['index', 'store', 'show', 'update', 'destroy']]);
+Route::resource('users', 'UsersController', ['only' => $RESTful]);
+Route::resource('photos', 'PhotosController', ['only' => $RESTful]);
 
+
+# Filters
 Route::when('photo/*', 'auth');
