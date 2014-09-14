@@ -10,7 +10,7 @@ class PhotosCest
         $I->refreshPhotosDirectory($I);
 	}
 
-	public function tryToGetPhotos(AcceptanceTester $I)
+	public function GetPhotos(AcceptanceTester $I)
 	{
 		$I->authenticate($I);
 
@@ -27,7 +27,7 @@ class PhotosCest
     /**
      * @param AcceptanceTester $I
      */
-    public function tryToGetPhotosExpanedWithUser(AcceptanceTester $I)
+    public function GetPhotosExpanedWithUser(AcceptanceTester $I)
     {
         $I->authenticate($I);
 
@@ -38,7 +38,7 @@ class PhotosCest
         $I->seeResponseContainsJson(['user' => ['id' => 1, 'username' => 'matthias']]);
     }
 
-	public function tryToUploadPhotoWithoutFile(AcceptanceTester $I)
+	public function UploadPhotoWithoutFile(AcceptanceTester $I)
 	{
 		$I->authenticate($I);
 
@@ -48,7 +48,7 @@ class PhotosCest
 		$I->seeResponseContainsJson(['message' => 'No file uploaded.']);
 	}
 
-    public function tryToGetPhotoByID(AcceptanceTester $I)
+    public function GetPhotoByID(AcceptanceTester $I)
     {
         $I->authenticate($I);
 
@@ -70,7 +70,7 @@ class PhotosCest
         $I->seeResponseContainsJson($photo);
     }
 
-    public function tryToNotGetPhotoByID(AcceptanceTester $I)
+    public function NotGetPhotoByID(AcceptanceTester $I)
     {
         $I->authenticate($I);
 
@@ -80,7 +80,7 @@ class PhotosCest
         $I->seeResponseContainsJson(['error' => ['message' => 'Photo not found.']]);
     }
 
-    public function tryToDeletePhotoByID(AcceptanceTester $I)
+    public function DeletePhotoByID(AcceptanceTester $I)
     {
         $I->authenticate($I);
 

@@ -8,7 +8,7 @@ class UsersCest
     /**
      * @param AcceptanceTester $I
      */
-    public function tryToGetUsers(AcceptanceTester $I)
+    public function GetUsers(AcceptanceTester $I)
     {
         $I->authenticate($I);
 
@@ -32,7 +32,7 @@ class UsersCest
     /**
      * @param AcceptanceTester $I
      */
-    public function tryToCreateNewUser(AcceptanceTester $I)
+    public function CreateNewUser(AcceptanceTester $I)
     {
         $I->authenticate($I);
 
@@ -61,7 +61,7 @@ class UsersCest
     /**
      * @param AcceptanceTester $I
      */
-    public function tryToGetUserByID(AcceptanceTester $I)
+    public function GetUserByID(AcceptanceTester $I)
     {
         $I->authenticate($I);
 
@@ -84,7 +84,7 @@ class UsersCest
     /**
      * @param AcceptanceTester $I
      */
-    public function tryToNotGetUserByID(AcceptanceTester $I)
+    public function NotGetUserByID(AcceptanceTester $I)
     {
         $I->authenticate($I);
 
