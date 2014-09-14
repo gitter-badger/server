@@ -17,13 +17,17 @@ class UsersController extends \BaseController {
 
 
 	/**
-	 * Store a newly created resource in storage.
+	 * Create a new user.
 	 *
 	 * @return Response
 	 */
 	public function store()
 	{
-		//
+		$user = User::create(Input::all());
+        $user->password = Input::get('password');
+        $user->save();
+
+        return Response::apiSuccess($user, 201);
 	}
 
 
