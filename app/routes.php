@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/', array('as' => 'root', function()
-{
-	return 'hi';
-}));
 
 Route::get('login', array('as' => 'login', 'uses' => 'AuthenticationController@login'));
 Route::post('authenticate', array('as' => 'authenticate', 'uses' => 'AuthenticationController@authenticate'));
