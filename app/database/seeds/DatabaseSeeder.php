@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder {
 		// $this->call('UserTableSeeder');
 
 		User::create(array(
-			'username' => 'Matthias',
+			'username' => 'matthias',
 			'email' => 'matthias@phototresor.org',
 			'password' => 'PhotoTresor',
 			'name_first' => 'Matthias',
