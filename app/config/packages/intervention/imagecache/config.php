@@ -31,7 +31,7 @@ return array(
     */
 
     'paths' => array(
-        Config::get('PhotoTresor.storage')
+        Config::get('phototresor.storage')
     ),
 
     /*
