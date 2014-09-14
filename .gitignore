@@ -8,6 +8,7 @@ Thumbs.db
 /composer.phar
 /node_modules/
 /photos/
+/public/index.html
 /public/scripts/
 /public/styles/
 /tests/_output/*
