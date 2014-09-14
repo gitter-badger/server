@@ -3,18 +3,6 @@
 class AuthenticationController extends \BaseController {
 
 	/**
-	 * Show the login form
-	 */
-	public function login()
-	{
-		if(Auth::check())
-		{
-			return Redirect::action('PhotosController@index');
-		}
-		return View::make('authentication/login');
-	}
-
-	/**
 	 * Authenticate the user
 	 */
 	public function authenticate()

@@ -11,8 +11,6 @@
 |
 */
 
-
-Route::get('login', array('as' => 'login', 'uses' => 'AuthenticationController@login'));
 Route::post('authenticate', array('as' => 'authenticate', 'uses' => 'AuthenticationController@authenticate'));
 Route::get('logout', array('as' => 'logout', 'uses' => 'AuthenticationController@logout'));
 
