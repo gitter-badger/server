@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+
 class UsersController extends \BaseController {
 
 	/**
@@ -9,7 +11,8 @@ class UsersController extends \BaseController {
 	 */
 	public function index()
 	{
-		return User::all();
+		$users = User::all();
+        return Response::apiSuccess($users);
 	}
 
 
@@ -32,7 +35,11 @@ class UsersController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+        try {
+            return User::findOrFail($id);
+        } catch (ModelNotFoundException $e) {
+            return Response::apiError(['message' => 'User not found.'], 404);
+        }
 	}
 
 
