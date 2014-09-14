@@ -1,6 +1,8 @@
 PhotoTresor
 ===========
 
+![](https://travis-ci.org/PhotoTresor/server.svg)
+
 Upload, organize, edit, view and share your photos with PhotoTresor.
 
 Upload multiple photos at once.
