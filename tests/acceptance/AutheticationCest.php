@@ -3,14 +3,6 @@ use \AcceptanceTester;
 
 class AutheticationCest
 {
-	public function _before()
-	{
-	}
-
-	public function _after()
-	{
-	}
-
 	public function tryToLoginButItFails(AcceptanceTester $I)
 	{
 		$params = array('username' => 'darthvader', 'password' => 'iamyourfather');
@@ -22,13 +14,12 @@ class AutheticationCest
 
 	public function tryToLoginAndSucceed(AcceptanceTester $I)
 	{
-		$params = array('username' => 'User ', 'password' => 'PhotoTresor');
-		$I->sendPOST('authenticate', $params);
+		$I->authenticate($I);
 
 		$I->seeResponseCodeIs(200);
-		$I->seeResponseContainsJson(array('id' => 1));
-		$I->seeResponseContainsJson(array('email' => 'user@phototresor.org'));
-		$I->seeResponseContainsJson(array('active' => true));
+		$I->seeResponseContainsJson(['id' => 1]);
+		$I->seeResponseContainsJson(['email' => 'matthias@phototresor.org']);
+		$I->seeResponseContainsJson(['active' => true]);
 	}
 
 	public function tryToLogout(AcceptanceTester $I)
