@@ -3,7 +3,7 @@ use \AcceptanceTester;
 
 class PhotosCest
 {
-	public static $resourceName = 'photos';
+	public $resourceName = 'photos';
 
 	public function _before(AcceptanceTester $I)
 	{
@@ -14,7 +14,7 @@ class PhotosCest
 	{
 		$I->authenticate($I);
 
-        $I->sendGET(self::$resourceName);
+        $I->sendGET($this->resourceName);
 
 		$I->seeResponseCodeIs(200);
 		$I->seeResponseContainsJson(['id' => 1, 'file_name' => '28.jpg']);
@@ -28,7 +28,7 @@ class PhotosCest
 	{
 		$I->authenticate($I);
 
-		$I->sendPOST(self::$resourceName);
+		$I->sendPOST($this->resourceName);
 
 		$I->seeResponseCodeIs(400);
 		$I->seeResponseContainsJson(['message' => 'No file uploaded.']);
@@ -38,7 +38,7 @@ class PhotosCest
     {
         $I->authenticate($I);
 
-        $I->sendGET(self::$resourceName . '/1');
+        $I->sendGET($this->resourceName . '/1');
 
         $photo = [
             "id" => 1,
@@ -63,7 +63,7 @@ class PhotosCest
         $I->seeInDatabase('photos', ['id' => 1]);
         $I->seeFileFound('tests/_photos/1/c02c99ac35c3b6f9c698ad093dd61148f0f7bce4.jpg');
 
-        $I->sendDELETE(self::$resourceName . '/1');
+        $I->sendDELETE($this->resourceName . '/1');
 
         $I->seeResponseCodeIs(200);
         $I->dontSeeInDatabase('photos', ['id' => 1]);
