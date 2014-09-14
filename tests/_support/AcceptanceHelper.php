@@ -13,7 +13,7 @@ class AcceptanceHelper extends \Codeception\Module
      */
     public function authenticate(AcceptanceTester $I)
     {
-        $params = ['username' => 'User', 'password' => 'PhotoTresor'];
+        $params = ['username' => 'Matthias', 'password' => 'PhotoTresor'];
         $I->sendPOST('authenticate', $params);
     }
 

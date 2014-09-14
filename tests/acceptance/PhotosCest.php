@@ -35,7 +35,7 @@ class PhotosCest
 
         $I->seeResponseCodeIs(200);
         $I->seeResponseContainsJson(['id' => 1, 'file_name' => '28.jpg']);
-        $I->seeResponseContainsJson(['user' => ['id' => 1, 'username' => 'user']]);
+        $I->seeResponseContainsJson(['user' => ['id' => 1, 'username' => 'matthias']]);
     }
 
 	public function tryToUploadPhotoWithoutFile(AcceptanceTester $I)

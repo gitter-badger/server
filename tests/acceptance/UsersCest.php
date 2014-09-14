@@ -16,10 +16,10 @@ class UsersCest
 
         $users = [
             'id' => 1,
-            'email' => "user@phototresor.org",
-            'username' => "user",
-            'name_first' => null,
-            'name_last' => null,
+            'email' => 'matthias@phototresor.org',
+            'username' => 'matthias',
+            'name_first' => 'Matthias',
+            'name_last' => 'Loibl',
             'active' => true,
             'quota' => 0
         ];
@@ -69,10 +69,10 @@ class UsersCest
 
         $user = [
             'id' => 1,
-            'email' => "user@phototresor.org",
-            'username' => "user",
-            'name_first' => null,
-            'name_last' => null,
+            'email' => 'matthias@phototresor.org',
+            'username' => 'matthias',
+            'name_first' => 'Matthias',
+            'name_last' => 'Loibl',
             'active' => true,
             'quota' => 0
         ];
