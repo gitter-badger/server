@@ -23,14 +23,14 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 	protected $hidden = ['password', 'remember_token'];
 
-    protected $fillable = ['email', 'username', 'name_first', 'name_last', 'active', 'quota'];
+	protected $fillable = ['email', 'username', 'name_first', 'name_last', 'active', 'quota'];
 
-    /**
-     * The active attribute return boolean true instead of mysql 1
-     *
-     * @param $value
-     * @return bool
-     */
+	/**
+	 * The active attribute return boolean true instead of mysql 1
+	 *
+	 * @param $value
+	 * @return bool
+	 */
 	public function getActiveAttribute($value)
 	{
 		if ($value == 1) {
@@ -40,19 +40,19 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		return false;
 	}
 
-    public function getQuotaAttribute($value)
-    {
-        return (int) $value;
-    }
+	public function getQuotaAttribute($value)
+	{
+		return (int) $value;
+	}
 
-    public function setPasswordAttribute($value)
-    {
-        $this->attributes['password'] = Hash::make($value);
-    }
+	public function setPasswordAttribute($value)
+	{
+		$this->attributes['password'] = Hash::make($value);
+	}
 
-    public function photos()
-    {
-        return $this->hasMany('Photo');
-    }
+	public function photos()
+	{
+		return $this->hasMany('Photo');
+	}
 
 }
