@@ -6,7 +6,7 @@ class AutheticationCest
 	public function LoginButItFails(AcceptanceTester $I)
 	{
 		$params = array('username' => 'darthvader', 'password' => 'iamyourfather');
-		$I->sendPOST('authenticate', $params);
+		$I->sendPOST(resource('authenticate'), $params);
 
 		$I->seeResponseCodeIs(400);
 		$I->seeResponseContainsJson(array('error' => array('message' => 'Wrong Credentials')));
@@ -24,10 +24,9 @@ class AutheticationCest
 
 	public function Logout(AcceptanceTester $I)
 	{
-		$I->wantTo('logout');
+		$I->sendGET(resource('logout'));
 
-		$I->amOnPage('logout');
-		$I->seeCurrentUrlEquals('');
+		$I->seeResponseCodeIs(200);
 	}
 
 }

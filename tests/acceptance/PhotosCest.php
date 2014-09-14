@@ -3,10 +3,11 @@ use \AcceptanceTester;
 
 class PhotosCest
 {
-	public $resourceName = 'photos';
+	public $resource;
 
 	public function _before(AcceptanceTester $I)
 	{
+		$this->resource = resource('photos');
         $I->refreshPhotosDirectory($I);
 	}
 
@@ -14,7 +15,7 @@ class PhotosCest
 	{
 		$I->authenticate($I);
 
-        $I->sendGET($this->resourceName);
+        $I->sendGET($this->resource);
 
 		$I->seeResponseCodeIs(200);
 		$I->seeResponseContainsJson(['id' => 1, 'file_name' => '28.jpg']);
@@ -31,7 +32,7 @@ class PhotosCest
     {
         $I->authenticate($I);
 
-        $I->sendGET($this->resourceName, ['expand' => 'user']);
+        $I->sendGET($this->resource, ['expand' => 'user']);
 
         $I->seeResponseCodeIs(200);
         $I->seeResponseContainsJson(['id' => 1, 'file_name' => '28.jpg']);
@@ -42,7 +43,7 @@ class PhotosCest
 	{
 		$I->authenticate($I);
 
-		$I->sendPOST($this->resourceName);
+		$I->sendPOST($this->resource);
 
 		$I->seeResponseCodeIs(400);
 		$I->seeResponseContainsJson(['message' => 'No file uploaded.']);
@@ -52,7 +53,7 @@ class PhotosCest
     {
         $I->authenticate($I);
 
-        $I->sendGET($this->resourceName . '/1');
+        $I->sendGET($this->resource . '/1');
 
         $photo = [
             "id" => 1,
@@ -74,7 +75,7 @@ class PhotosCest
     {
         $I->authenticate($I);
 
-        $I->sendGET($this->resourceName . '/1024');
+        $I->sendGET($this->resource . '/1024');
 
         $I->seeResponseCodeIs(404);
         $I->seeResponseContainsJson(['error' => ['message' => 'Photo not found.']]);
@@ -87,7 +88,7 @@ class PhotosCest
         $I->seeInDatabase('photos', ['id' => 1]);
         $I->seeFileFound('tests/_photos/1/c02c99ac35c3b6f9c698ad093dd61148f0f7bce4.jpg');
 
-        $I->sendDELETE($this->resourceName . '/1');
+        $I->sendDELETE($this->resource . '/1');
 
         $I->seeResponseCodeIs(200);
         $I->dontSeeInDatabase('photos', ['id' => 1]);

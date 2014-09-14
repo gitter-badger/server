@@ -14,7 +14,7 @@ class AcceptanceHelper extends \Codeception\Module
     public function authenticate(AcceptanceTester $I)
     {
         $params = ['username' => 'Matthias', 'password' => 'PhotoTresor'];
-        $I->sendPOST('authenticate', $params);
+        $I->sendPOST(resource('authenticate'), $params);
     }
 
     protected $photos = ['28.jpg', 'HPIM1541.JPG', 'HPIM2997.JPG', 'img_0171.jpg', 'p1120151.jpg'];

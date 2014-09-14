@@ -3,7 +3,12 @@ use \AcceptanceTester;
 
 class UsersCest
 {
-    protected $resourceName = 'users';
+    protected $resource;
+
+	public function _before()
+	{
+		$this->resource = resource('users');
+	}
 
     /**
      * @param AcceptanceTester $I
@@ -12,7 +17,7 @@ class UsersCest
     {
         $I->authenticate($I);
 
-        $I->sendGET($this->resourceName);
+        $I->sendGET($this->resource);
 
         $users = [
             'id' => 1,
@@ -45,7 +50,7 @@ class UsersCest
             'active' => true,
             'quota' => 22147000000 // 2GiB
         ];
-        $I->sendPOST($this->resourceName, $newUser);
+        $I->sendPOST($this->resource, $newUser);
 
         $userFields = array_merge($newUser, ['id' => 2]);
         unset($userFields['password']);
@@ -65,7 +70,7 @@ class UsersCest
     {
         $I->authenticate($I);
 
-        $I->sendGET($this->resourceName . '/1');
+        $I->sendGET($this->resource . '/1');
 
         $user = [
             'id' => 1,
@@ -88,7 +93,7 @@ class UsersCest
     {
         $I->authenticate($I);
 
-        $I->sendGET($this->resourceName . '/23');
+        $I->sendGET($this->resource . '/23');
 
         $I->seeResponseCodeIs(404);
         $I->seeResponseContainsJson(['error' => ['message' => 'User not found.']]);
