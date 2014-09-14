@@ -40,6 +40,11 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		return false;
 	}
 
+    public function getQuotaAttribute($value)
+    {
+        return (int) $value;
+    }
+
     public function photos()
     {
         return $this->hasMany('Photo');
