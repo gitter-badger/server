@@ -3,7 +3,7 @@ use \AcceptanceTester;
 
 class AutheticationCest
 {
-	public function LoginButItFails(AcceptanceTester $I)
+	public function loginButItFails(AcceptanceTester $I)
 	{
 		$params = array('username' => 'darthvader', 'password' => 'iamyourfather');
 		$I->sendPOST(resource('authenticate'), $params);
@@ -12,7 +12,7 @@ class AutheticationCest
 		$I->seeResponseContainsJson(array('error' => array('message' => 'Wrong Credentials')));
 	}
 
-	public function LoginAndSucceed(AcceptanceTester $I)
+	public function loginAndSucceed(AcceptanceTester $I)
 	{
 		$I->authenticate($I);
 
@@ -22,7 +22,7 @@ class AutheticationCest
 		$I->seeResponseContainsJson(['active' => true]);
 	}
 
-	public function Logout(AcceptanceTester $I)
+	public function logout(AcceptanceTester $I)
 	{
 		$I->sendGET(resource('logout'));
 

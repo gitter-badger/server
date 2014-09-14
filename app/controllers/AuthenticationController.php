@@ -26,7 +26,7 @@ class AuthenticationController extends \BaseController {
 	{
 		Auth::logout();
 
-		return Redirect::to('/');
+		return;
 	}
 
 }
