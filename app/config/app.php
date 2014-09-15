@@ -123,6 +123,7 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 
 		'Intervention\Image\ImageServiceProvider',
+		'PhotoTresor\API\APIServiceProvider',
 	),
 
 	/*
@@ -190,6 +191,7 @@ return array(
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
 
+		'API' => 'PhotoTresor\API\APIFacade',
 		'Image' => 'Intervention\Image\Facades\Image',
 	),
 
