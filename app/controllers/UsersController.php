@@ -12,7 +12,7 @@ class UsersController extends \BaseController {
 	public function index()
 	{
 		$users = User::all();
-        return Response::apiSuccess($users);
+		return API::withResource($users)->success();
 	}
 
 
