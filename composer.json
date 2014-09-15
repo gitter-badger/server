@@ -19,7 +19,10 @@
 			"app/models",
 			"app/database/migrations",
 			"app/database/seeds"
-		]
+		],
+		"psr-4": {
+			"PhotoTresor\\": "app/PhotoTresor"
+		}
 	},
 	"scripts": {
 		"post-install-cmd": [
