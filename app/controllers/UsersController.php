@@ -42,7 +42,7 @@ class UsersController extends \BaseController {
         try {
             return User::findOrFail($id);
         } catch (ModelNotFoundException $e) {
-            return Response::apiError(['message' => 'User not found.'], 404);
+	        return $this->modelNotFoundResponse();
         }
 	}
 
@@ -55,7 +55,25 @@ class UsersController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		try
+		{
+			$user = User::findOrFail($id);
+
+			$user->email = Input::get('email');
+			$user->username = Input::get('username');
+			$user->name_first = Input::get('name_first');
+			$user->name_last = Input::get('name_last');
+			$user->active = Input::get('active');
+			$user->quota = Input::get('quota');
+
+			$user->save();
+
+			return $user;
+		}
+		catch (ModelNotFoundException $e)
+		{
+			return $this->modelNotFoundResponse();
+		}
 	}
 
 
@@ -70,5 +88,13 @@ class UsersController extends \BaseController {
 		//
 	}
 
+	/**
+	 * @return mixed
+	 */
+	private function modelNotFoundResponse()
+	{
+		return Response::apiError(['message' => 'User not found.'], 404);
+	}
 
 }
+

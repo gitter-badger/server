@@ -65,5 +65,13 @@ class AcceptanceHelper extends \Codeception\Module
         }
     }
 
+	/**
+	 * @param AcceptanceTester $I
+	 */
+	public function seeErrorMessageIs(AcceptanceTester $I, $message)
+	{
+		$I->seeResponseContainsJson(['error' => ['message' => $message]]);
+	}
+
 }
 

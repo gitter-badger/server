@@ -96,6 +96,39 @@ class UsersCest
         $I->sendGET($this->resource . '/23');
 
         $I->seeResponseCodeIs(404);
-        $I->seeResponseContainsJson(['error' => ['message' => 'User not found.']]);
+	    $I->seeErrorMessageIs($I, 'User not found.');
     }
+
+	/**
+	 * @param AcceptanceTester $I
+	 */
+	public function UpdateUser(AcceptanceTester $I)
+	{
+		$I->authenticate($I);
+
+		$user = [
+			'email' => 'somename@phototresor.org',
+			'username' => 'someuser',
+			'name_first' => 'some',
+			'name_last' => 'name',
+			'active' => false,
+			'quota' => 1048576
+		];
+
+		$I->sendPUT($this->resource . '/1', $user);
+
+		$I->seeResponseCodeIs(200);
+		$I->seeResponseContainsJson($user);
+	}
+
+	public function UpdateNonExistendUser(AcceptanceTester $I)
+	{
+		$I->authenticate($I);
+
+		$I->sendPUT($this->resource . '/123', ['email' => 'somemail@phototresor.org']);
+
+		$I->seeResponseCodeIs(404);
+		$I->seeErrorMessageIs($I, 'User not found.');
+	}
+
 }
