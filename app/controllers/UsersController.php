@@ -85,7 +85,17 @@ class UsersController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		try
+		{
+			$user = User::findOrFail($id);
+			$user->delete();
+
+			return Response::apiSuccess([]);
+		}
+		catch (ModelNotFoundException $e)
+		{
+			return $this->modelNotFoundResponse();
+		}
 	}
 
 	/**

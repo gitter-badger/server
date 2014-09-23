@@ -131,4 +131,15 @@ class UsersCest
 		$I->seeErrorMessageIs($I, 'User not found.');
 	}
 
+	public function DeleteUser(AcceptanceTester $I)
+	{
+		$I->authenticate($I);
+
+		$I->sendDELETE($this->resource . '/1');
+
+		$I->seeResponseCodeIs(200);
+		$I->seeResponseContainsJson([]);
+		$I->dontSeeInDatabase('users', ['id' => 1]);
+	}
+
 }
