@@ -4,6 +4,10 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class UsersController extends \BaseController {
 
+	public function __construct() {
+		$this->beforeFilter('auth');
+	}
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -12,7 +16,7 @@ class UsersController extends \BaseController {
 	public function index()
 	{
 		$users = User::all();
-        return Response::apiSuccess($users);
+		return Response::apiSuccess($users);
 	}
 
 
@@ -24,10 +28,10 @@ class UsersController extends \BaseController {
 	public function store()
 	{
 		$user = User::create(Input::all());
-        $user->password = Input::get('password');
-        $user->save();
+		$user->password = Input::get('password');
+		$user->save();
 
-        return Response::apiSuccess($user, 201);
+		return Response::apiSuccess($user, 201);
 	}
 
 
@@ -39,11 +43,11 @@ class UsersController extends \BaseController {
 	 */
 	public function show($id)
 	{
-        try {
-            return User::findOrFail($id);
-        } catch (ModelNotFoundException $e) {
-	        return $this->modelNotFoundResponse();
-        }
+		try {
+			return User::findOrFail($id);
+		} catch (ModelNotFoundException $e) {
+			return $this->modelNotFoundResponse();
+		}
 	}
 
 
