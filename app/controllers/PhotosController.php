@@ -90,14 +90,14 @@ class PhotosController extends \BaseController {
 	 */
 	public function show($id)
 	{
-        try
-        {
-            return Photo::findOrFail($id);
-        }
-        catch (ModelNotFoundException $e)
-        {
-            return Response::apiError(['message' => 'Photo not found.'], 404);
-        }
+		try
+		{
+			return Photo::findOrFail($id);
+		}
+		catch (ModelNotFoundException $e)
+		{
+			return Response::apiError(['message' => 'Photo not found.'], 404);
+		}
 	}
 
 	/**
@@ -121,11 +121,11 @@ class PhotosController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-        $photo = Photo::find($id);
-        $photoPath = Config::get('phototresor.storage') . "$photo->user_id/$photo->file_sha1.jpg";
-        Log::debug('Delete Photo: ' . $photoPath);
+		$photo = Photo::find($id);
+		$photoPath = Config::get('phototresor.storage') . "$photo->user_id/$photo->file_sha1.jpg";
+		Log::debug('Delete Photo: ' . $photoPath);
 
-        File::delete($photoPath);
+		File::delete($photoPath);
 		return Photo::destroy($id);
 	}
 
