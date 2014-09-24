@@ -3,11 +3,18 @@
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Log;
+use PhotoTresor\Repositories\PhotoRepository;
 
 class PhotosController extends \BaseController {
 
-	function __construct() {
-		$this->beforeFilter('auth');
+    protected $photos;
+
+    /**
+     * @param PhotoRepository $photos
+     */
+    function __construct(PhotoRepository $photos) {
+        $this->beforeFilter('auth');
+        $this->photos = $photos;
     }
 
 	/**
@@ -18,14 +25,14 @@ class PhotosController extends \BaseController {
 	 */
 	public function index()
 	{
-		$photos = Photo::orderBy('captured_at', 'DESC');
-
-        if(Input::get('expand') == 'user')
-        {
-            $photos->with('User');
+        $options = [];
+        if(Input::get('expand') == 'user') {
+            $options = ['expand' => 'user'];
         }
 
-		return Response::apiSuccess($photos->get());
+        $photos = $this->photos->all($options);
+
+		return Response::apiSuccess($photos);
 	}
 
 	/**
