@@ -7,14 +7,14 @@ use PhotoTresor\Repositories\PhotoRepository;
 
 class PhotosController extends \BaseController {
 
-    protected $photos;
+    protected $photoRepository;
 
     /**
-     * @param PhotoRepository $photos
+     * @param PhotoRepository $photoRepository
      */
-    function __construct(PhotoRepository $photos) {
+    function __construct(PhotoRepository $photoRepository) {
         $this->beforeFilter('auth');
-        $this->photos = $photos;
+        $this->photoRepository = $photoRepository;
     }
 
 	/**
@@ -25,12 +25,12 @@ class PhotosController extends \BaseController {
 	 */
 	public function index()
 	{
-        $options = [];
-        if(Input::get('expand') == 'user') {
-            $options = ['expand' => 'user'];
+        if(Input::get('expand') == 'user')
+        {
+            $photos = $this->photoRepository->allWithUsers();
+        } else {
+            $photos = $this->photoRepository->all();
         }
-
-        $photos = $this->photos->all($options);
 
 		return Response::apiSuccess($photos);
 	}
