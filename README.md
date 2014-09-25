@@ -1,7 +1,7 @@
 PhotoTresor
 ===========
 
-![](https://travis-ci.org/PhotoTresor/server.svg)
+[![Build Status](https://travis-ci.org/PhotoTresor/server.svg)](https://travis-ci.org/PhotoTresor/server)
 
 Upload, organize, edit, view and share your photos with PhotoTresor.
 
