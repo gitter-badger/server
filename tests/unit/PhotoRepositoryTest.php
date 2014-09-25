@@ -3,7 +3,7 @@
 class PhotoRepositoryTest extends TestCase
 {
 
-    private $photoMock;
+    private $photoModel;
     private $photoRepository;
 
     public function setUp()
@@ -11,22 +11,23 @@ class PhotoRepositoryTest extends TestCase
         parent::setUp();
 
         Mockery::mock('Eloquent');
-        $this->photoMock = Mockery::mock('Photo');
-        $this->photoRepository = new \PhotoTresor\Repositories\PhotoRepository($this->photoMock);
+        $this->photoModel = Mockery::mock('Photo');
+        $this->photoRepository = new \PhotoTresor\Repositories\PhotoRepository($this->photoModel);
     }
 
-    public function testExpandUser()
+    public function testAll()
     {
-        $this->photoMock->shouldReceive('with')->once()->with('User')->andReturn($this->photoMock);
+        $this->photoModel->shouldReceive('get')->once()->withNoArgs()->andReturn($this->photoModel);
 
-        $this->photoRepository->expandUser();
+        $this->photoRepository->all();
     }
 
-    public function testOrder()
+    public function testAllWithUsers()
     {
-        $this->photoMock->shouldReceive('orderBy')->once()->with('captured_at', 'DESC')->andReturn($this->photoMock);
+        $this->photoModel->shouldReceive('with')->once()->with('User')->andReturn($this->photoModel)
+                        ->shouldReceive('get')->once()->withNoArgs()->andReturn($this->photoModel);
 
-        $this->photoRepository->order();
+        $this->photoRepository->allWithUsers();
     }
 
 }

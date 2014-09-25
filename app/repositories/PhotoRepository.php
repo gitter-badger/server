@@ -5,9 +5,6 @@ use Photo;
 
 class PhotoRepository {
 
-    /**
-     * @var Photo
-     */
     protected $photo;
 
     public function __construct(Photo $photo)
@@ -15,25 +12,14 @@ class PhotoRepository {
         $this->photo = $photo;
     }
 
-    public function all(array $options)
+    public function all()
     {
-        $this->order();
-
-        if(isset($options['expand']) && $options['expand'] == 'user') {
-            $this->expandUser();
-        }
-
         return $this->photo->get();
     }
 
-    public function expandUser()
+    public function allWithUsers()
     {
-        $this->photo = $this->photo->with('User');
-    }
-
-    public function order()
-    {
-        $this->photo = $this->photo->orderBy('captured_at', 'DESC');
+        return $this->photo->with('User')->get();
     }
 
 }
