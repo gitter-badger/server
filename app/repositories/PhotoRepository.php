@@ -26,12 +26,12 @@ class PhotoRepository {
         return $this->photo->get();
     }
 
-    protected function expandUser()
+    public function expandUser()
     {
         $this->photo = $this->photo->with('User');
     }
 
-    protected function order()
+    public function order()
     {
         $this->photo = $this->photo->orderBy('captured_at', 'DESC');
     }
