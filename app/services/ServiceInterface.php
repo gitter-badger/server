@@ -1,11 +1,11 @@
 <?php
-namespace PhotoTresor\Entities;
+namespace PhotoTresor\Services;
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\MessageBag;
 
-interface EntityInterface {
+interface ServiceInterface {
 
     /**
      * @return Collection

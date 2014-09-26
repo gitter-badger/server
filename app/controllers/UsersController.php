@@ -1,13 +1,13 @@
 <?php
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use PhotoTresor\Entities\UserEntity;
+use PhotoTresor\Services\UserService;
 
 class UsersController extends \BaseController {
 
     protected $usersRepository;
 
-    public function __construct(UserEntity $users)
+    public function __construct(UserService $users)
     {
         $this->beforeFilter('auth');
         $this->usersRepository = $users;

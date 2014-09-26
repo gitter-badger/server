@@ -1,10 +1,10 @@
 <?php
-namespace PhotoTresor\Entities;
+namespace PhotoTresor\Services;
 
 use Illuminate\Support\MessageBag;
 use PhotoTresor\Repositories\UsersRepository;
 
-class UserEntity extends Entity implements EntityInterface {
+class UserService extends Service implements ServiceInterface {
 
     /**
      * @var UsersRepository

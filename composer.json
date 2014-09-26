@@ -24,7 +24,7 @@
         ],
         "psr-4": {
             "PhotoTresor\\Repositories\\": "app/repositories",
-            "PhotoTresor\\Entities\\": "app/entities",
+            "PhotoTresor\\Services\\": "app/services",
             "PhotoTresor\\Validators\\": "app/validators"
         }
     },
