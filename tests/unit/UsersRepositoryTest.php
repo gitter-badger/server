@@ -4,7 +4,6 @@ use PhotoTresor\Repositories\UsersRepository;
 
 class UsersRepositoryTest extends TestCase
 {
-
     private $userModel;
     private $usersRepository;
 
