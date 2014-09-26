@@ -1,12 +1,17 @@
 <?php
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use PhotoTresor\Repositories\UsersRepository;
 
 class UsersController extends \BaseController {
 
-	public function __construct() {
-		$this->beforeFilter('auth');
-	}
+    protected $usersRepository;
+
+    public function __construct(UsersRepository $usersRepository)
+    {
+        $this->beforeFilter('auth');
+        $this->usersRepository = $usersRepository;
+    }
 
 	/**
 	 * Display a listing of the resource.
@@ -15,7 +20,7 @@ class UsersController extends \BaseController {
 	 */
 	public function index()
 	{
-		$users = User::all();
+        $users = $this->usersRepository->all();
 		return Response::apiSuccess($users);
 	}
 
