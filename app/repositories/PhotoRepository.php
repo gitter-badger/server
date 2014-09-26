@@ -12,14 +12,20 @@ class PhotoRepository {
         $this->photo = $photo;
     }
 
+    /**
+     * @return Photo
+     */
     public function all()
     {
-        return $this->photo->get();
+        return $this->photo;
     }
 
+    /**
+     * @return Photo
+     */
     public function allWithUsers()
     {
-        return $this->photo->with('User')->get();
+        return $this->all()->with('User');
     }
 
 }

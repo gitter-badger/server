@@ -1,33 +1,34 @@
 <?php
 
+use PhotoTresor\Repositories\PhotoRepository;
+
 class PhotoRepositoryTest extends TestCase
 {
-
-    private $photoModel;
-    private $photoRepository;
+    private $model;
+    private $repository;
 
     public function setUp()
     {
         parent::setUp();
 
-        Mockery::mock('Eloquent');
-        $this->photoModel = Mockery::mock('Photo');
-        $this->photoRepository = new \PhotoTresor\Repositories\PhotoRepository($this->photoModel);
+        $this->model = Mockery::mock('Photo');
+        $this->repository = new PhotoRepository($this->model);
     }
 
     public function testAll()
     {
-        $this->photoModel->shouldReceive('get')->once()->withNoArgs()->andReturn($this->photoModel);
+        $returned = $this->repository->all();
 
-        $this->photoRepository->all();
+        $this->assertSame($this->model, $returned);
     }
 
     public function testAllWithUsers()
     {
-        $this->photoModel->shouldReceive('with')->once()->with('User')->andReturn($this->photoModel)
-                        ->shouldReceive('get')->once()->withNoArgs()->andReturn($this->photoModel);
+        $this->model->shouldReceive('with')->once()->with('User')->andReturn($this->model);
 
-        $this->photoRepository->allWithUsers();
+        $returned = $this->repository->allWithUsers();
+
+        $this->assertSame($this->model, $returned);
     }
 
 }
