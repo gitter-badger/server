@@ -17,6 +17,8 @@ class PhotoRepositoryTest extends TestCase
 
     public function testAll()
     {
+        $this->model->shouldReceive('get')->once()->withNoArgs()->andReturn($this->model);
+
         $returned = $this->repository->all();
 
         $this->assertSame($this->model, $returned);
@@ -24,7 +26,8 @@ class PhotoRepositoryTest extends TestCase
 
     public function testAllWithUsers()
     {
-        $this->model->shouldReceive('with')->once()->with('User')->andReturn($this->model);
+        $this->model->shouldReceive('with')->once()->with('User')->andReturn($this->model)
+                    ->shouldReceive('get')->once()->withNoArgs()->andReturn($this->model);
 
         $returned = $this->repository->allWithUsers();
 

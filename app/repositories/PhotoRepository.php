@@ -17,7 +17,7 @@ class PhotoRepository {
      */
     public function all()
     {
-        return $this->photo;
+        return $this->photo->get();
     }
 
     /**
@@ -25,7 +25,7 @@ class PhotoRepository {
      */
     public function allWithUsers()
     {
-        return $this->all()->with('User');
+        return $this->photo->with('User')->get();
     }
 
 }
