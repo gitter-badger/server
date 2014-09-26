@@ -5,12 +5,12 @@ use PhotoTresor\Services\UserService;
 
 class UsersController extends \BaseController {
 
-    protected $usersRepository;
+    protected $users;
 
     public function __construct(UserService $users)
     {
         $this->beforeFilter('auth');
-        $this->usersRepository = $users;
+        $this->users = $users;
     }
 
     /**
@@ -20,7 +20,7 @@ class UsersController extends \BaseController {
      */
     public function index()
     {
-        $users = $this->usersRepository->all();
+        $users = $this->users->all();
         return Response::apiSuccess($users);
     }
 
