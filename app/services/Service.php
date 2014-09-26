@@ -48,7 +48,7 @@ abstract class Service implements ServiceInterface {
      */
     public function delete($id)
     {
-        // TODO: Implement delete() method.
+        $this->repository->delete($id);
     }
 
     /**
