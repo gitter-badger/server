@@ -1,7 +1,7 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "name": "phototresor/server",
+    "description": "The PhotoTresor Server.",
+    "keywords": ["server", "api", "laravel"],
     "license": "MIT",
     "require": {
         "intervention/image": "2.*",
@@ -23,7 +23,9 @@
             "tests/unit/TestCase.php"
         ],
         "psr-4": {
-            "PhotoTresor\\Repositories\\": "app/repositories"
+            "PhotoTresor\\Repositories\\": "app/repositories",
+            "PhotoTresor\\Entities\\": "app/entities",
+            "PhotoTresor\\Validators\\": "app/validators"
         }
     },
     "scripts": {
