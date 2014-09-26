@@ -2,8 +2,17 @@
 
 class TestCase extends Illuminate\Foundation\Testing\TestCase {
 
-    protected function tearDown()
+    public function setUp()
     {
+        parent::setUp();
+
+        Mockery::mock('Eloquent');
+    }
+
+    public function tearDown()
+    {
+        parent::tearDown();
+
         Mockery::close();
     }
 
