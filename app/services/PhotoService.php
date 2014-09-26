@@ -8,11 +8,16 @@ class PhotoService extends Service {
     /**
      * @var PhotoRepository
      */
-    private $repository;
+    protected $repository;
 
     public function __construct(PhotoRepository $repository)
     {
         $this->repository = $repository;
+    }
+
+    public function allWithUsers()
+    {
+        return $this->repository->allWithUsers();
     }
 
 }
