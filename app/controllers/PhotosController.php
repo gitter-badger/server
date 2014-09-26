@@ -3,18 +3,15 @@
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Log;
-use PhotoTresor\Repositories\PhotoRepository;
+use PhotoTresor\Services\PhotoService;
 
 class PhotosController extends \BaseController {
 
-    protected $photoRepository;
+    protected $photos;
 
-    /**
-     * @param PhotoRepository $photoRepository
-     */
-    function __construct(PhotoRepository $photoRepository) {
+    function __construct(PhotoService $photos) {
         $this->beforeFilter('auth');
-        $this->photoRepository = $photoRepository;
+        $this->photos = $photos;
     }
 
 	/**
@@ -27,9 +24,9 @@ class PhotosController extends \BaseController {
 	{
         if(Input::get('expand') == 'user')
         {
-            $photos = $this->photoRepository->allWithUsers();
+            $photos = $this->photos->allWithUsers();
         } else {
-            $photos = $this->photoRepository->all();
+            $photos = $this->photos->all();
         }
 
 		return Response::apiSuccess($photos);
