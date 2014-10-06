@@ -42,7 +42,7 @@ abstract class AbstractService implements ServiceInterface {
      */
     public function update($id, array $input)
     {
-        return $this->repository->update($input);
+        return $this->repository->update($id, $input);
     }
 
     /**
