@@ -3,14 +3,23 @@
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use PhotoTresor\Services\UserService;
 
+/**
+ * Class UsersController
+ */
 class UsersController extends \BaseController {
 
-    protected $users;
+    /**
+     * @var UserService
+     */
+    protected $userService;
 
-    public function __construct(UserService $users)
+    /**
+     * @param UserService $userService
+     */
+    public function __construct(UserService $userService)
     {
         $this->beforeFilter('auth');
-        $this->users = $users;
+        $this->userService = $userService;
     }
 
     /**
@@ -20,10 +29,10 @@ class UsersController extends \BaseController {
      */
     public function index()
     {
-        $users = $this->users->all();
+        $users = $this->userService->all();
+
         return Response::apiSuccess($users);
     }
-
 
     /**
      * Create a new user.
@@ -32,13 +41,10 @@ class UsersController extends \BaseController {
      */
     public function store()
     {
-        $user = User::create(Input::all());
-        $user->password = Input::get('password');
-        $user->save();
+        $user = $this->userService->create(Input::all());
 
         return Response::apiSuccess($user, 201);
     }
-
 
     /**
      * Display the specified resource.
@@ -48,13 +54,15 @@ class UsersController extends \BaseController {
      */
     public function show($id)
     {
-        try {
-            return User::findOrFail($id);
-        } catch (ModelNotFoundException $e) {
+        try
+        {
+            return $this->userService->find($id);
+        }
+        catch (ModelNotFoundException $e)
+        {
             return $this->modelNotFoundResponse();
         }
     }
-
 
     /**
      * Update the specified resource in storage.
@@ -66,14 +74,13 @@ class UsersController extends \BaseController {
     {
         try
         {
-            return $this->users->update($id, Input::all());
+            return $this->userService->update($id, Input::all());
         }
         catch (ModelNotFoundException $e)
         {
             return $this->modelNotFoundResponse();
         }
     }
-
 
     /**
      * Remove the specified resource from storage.
@@ -85,8 +92,7 @@ class UsersController extends \BaseController {
     {
         try
         {
-            $user = User::findOrFail($id);
-            $user->delete();
+            $this->userService->delete($id);
 
             return Response::apiSuccess([]);
         }
