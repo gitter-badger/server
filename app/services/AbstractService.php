@@ -36,10 +36,11 @@ abstract class AbstractService implements ServiceInterface {
     }
 
     /**
+     * @param int $id
      * @param array $input
      * @return Model
      */
-    public function update(array $input)
+    public function update($id, array $input)
     {
         return $this->repository->update($input);
     }

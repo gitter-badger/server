@@ -39,12 +39,13 @@ class UsersRepository implements RepositoryInterface {
     }
 
     /**
+     * @param int $id
      * @param array $input
      * @return Model
      */
-    public function update(array $input)
+    public function update($id, array $input)
     {
-        $user = $this->find($input['id']);
+        $user = $this->find($id);
 
         $user->update($input);
 

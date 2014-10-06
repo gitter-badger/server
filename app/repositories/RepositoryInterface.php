@@ -21,10 +21,11 @@ interface RepositoryInterface {
     public function create(array $input);
 
     /**
+     * @param int $id
      * @param array $input
      * @return Model
      */
-    public function update(array $input);
+    public function update($id, array $input);
 
     /**
      * @param int $id

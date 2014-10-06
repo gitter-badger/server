@@ -47,12 +47,12 @@ class UsersRepositoryTest extends TestCase
 
     public function testUpdate()
     {
-        $inputs = ['id' => 1234, 'email' => 'matthias@phototresor.org'];
+        $inputs = ['email' => 'matthias@phototresor.org'];
 
         $this->mockFindOrFail();
         $this->model->shouldReceive('update')->once()->with($inputs)->andReturn($this->model);
 
-        $returned = $this->repository->update($inputs);
+        $returned = $this->repository->update(1234, $inputs);
 
         $this->assertSame($this->model, $returned);
     }
