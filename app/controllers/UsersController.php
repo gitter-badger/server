@@ -66,18 +66,7 @@ class UsersController extends \BaseController {
     {
         try
         {
-            $user = User::findOrFail($id);
-
-            $user->email = Input::get('email');
-            $user->username = Input::get('username');
-            $user->name_first = Input::get('name_first');
-            $user->name_last = Input::get('name_last');
-            $user->active = Input::get('active');
-            $user->quota = Input::get('quota');
-
-            $user->save();
-
-            return $user;
+            return $this->users->update($id, Input::all());
         }
         catch (ModelNotFoundException $e)
         {
