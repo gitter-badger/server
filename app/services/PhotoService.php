@@ -3,7 +3,7 @@ namespace PhotoTresor\Services;
 
 use PhotoTresor\Repositories\PhotoRepository;
 
-class PhotoService extends Service {
+class PhotoService extends AbstractService {
 
     /**
      * @var PhotoRepository
