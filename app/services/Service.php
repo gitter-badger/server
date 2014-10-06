@@ -7,6 +7,8 @@ use Illuminate\Support\MessageBag;
 
 abstract class Service implements ServiceInterface {
 
+    protected $errors;
+
     /**
      * @return Collection
      */
@@ -30,7 +32,7 @@ abstract class Service implements ServiceInterface {
      */
     public function create(array $input)
     {
-        // TODO: Implement create() method.
+        return $this->repository->create($input);
     }
 
     /**
@@ -39,7 +41,7 @@ abstract class Service implements ServiceInterface {
      */
     public function update(array $input)
     {
-        // TODO: Implement update() method.
+        return $this->repository->update($input);
     }
 
     /**
@@ -56,6 +58,6 @@ abstract class Service implements ServiceInterface {
      */
     public function errors()
     {
-        // TODO: Implement errors() method.
+        return $this->errors;
     }
 }
