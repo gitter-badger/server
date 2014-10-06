@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\MessageBag;
 
-abstract class Service implements ServiceInterface {
+abstract class AbstractService implements ServiceInterface {
 
     protected $errors;
 
