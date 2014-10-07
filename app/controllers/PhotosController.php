@@ -56,7 +56,7 @@ class PhotosController extends \BaseController {
                 if($fileExists)
                     return Response::json(array('message' => 'File already exists.'), 409);
 
-                $photo = Photo::create([
+                $data = [
                     'file_name' => $inputImage->getClientOriginalName(),
                     'file_size' => $inputImage->getSize(),
                     'file_mime_type' => $interventionImage->mime(),
@@ -65,7 +65,9 @@ class PhotosController extends \BaseController {
                     'height' => $interventionImage->height(),
                     'user_id' => $user_id,
                     'captured_at' => $interventionImage->exif()['DateTimeOriginal']
-                ]);
+                ];
+
+                $photo = $this->photoService->create($data);
 
                 $file_path = Config::get('phototresor.storage') . "/$user_id/";
                 $file_name = "$photo->file_sha1.jpg";
@@ -89,7 +91,7 @@ class PhotosController extends \BaseController {
     {
         try
         {
-            return Photo::findOrFail($id);
+            return $this->photoService->find($id);
         }
         catch (ModelNotFoundException $e)
         {
@@ -123,7 +125,7 @@ class PhotosController extends \BaseController {
         Log::debug('Delete Photo: ' . $photoPath);
 
         File::delete($photoPath);
-        return Photo::destroy($id);
+        return $this->photoService->delete($id);
     }
 
 }
