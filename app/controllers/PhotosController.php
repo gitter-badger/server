@@ -7,11 +7,11 @@ use PhotoTresor\Services\PhotoService;
 
 class PhotosController extends \BaseController {
 
-    protected $photos;
+    protected $photoService;
 
-    function __construct(PhotoService $photos) {
+    function __construct(PhotoService $photoService) {
         $this->beforeFilter('auth');
-        $this->photos = $photos;
+        $this->photoService = $photoService;
     }
 
     /**
@@ -24,9 +24,9 @@ class PhotosController extends \BaseController {
     {
         if(Input::get('expand') == 'user')
         {
-            $photos = $this->photos->allWithUsers();
+            $photos = $this->photoService->allWithUsers();
         } else {
-            $photos = $this->photos->all();
+            $photos = $this->photoService->all();
         }
 
         return Response::apiSuccess($photos);
