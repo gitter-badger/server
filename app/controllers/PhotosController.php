@@ -125,7 +125,9 @@ class PhotosController extends \BaseController {
         Log::debug('Delete Photo: ' . $photoPath);
 
         File::delete($photoPath);
-        return $this->photoService->delete($id);
+        $this->photoService->delete($id);
+
+        return Response::apiSuccess([]);
     }
 
 }
