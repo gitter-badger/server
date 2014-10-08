@@ -2,11 +2,12 @@
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use PhotoTresor\Services\UserService;
+use PhotoTresor\Validators\ValidatorException;
 
 /**
  * Class UsersController
  */
-class UsersController extends \BaseController {
+class UsersController extends BaseController {
 
     /**
      * @var UserService
@@ -19,11 +20,12 @@ class UsersController extends \BaseController {
     public function __construct(UserService $userService)
     {
         $this->beforeFilter('auth');
+
         $this->userService = $userService;
     }
 
     /**
-     * Display a listing of the resource.
+     * Display all users.
      *
      * @return Response
      */
@@ -47,7 +49,7 @@ class UsersController extends \BaseController {
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified user.
      *
      * @param  int  $id
      * @return Response
@@ -65,7 +67,7 @@ class UsersController extends \BaseController {
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified user.
      *
      * @param  int  $id
      * @return Response
@@ -83,7 +85,7 @@ class UsersController extends \BaseController {
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified user.
      *
      * @param  int  $id
      * @return Response
@@ -103,7 +105,7 @@ class UsersController extends \BaseController {
     }
 
     /**
-     * @return mixed
+     * @return \Illuminate\Http\Response
      */
     private function modelNotFoundResponse()
     {
