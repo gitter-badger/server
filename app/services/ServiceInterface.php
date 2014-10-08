@@ -19,17 +19,17 @@ interface ServiceInterface {
     public function find($id);
 
     /**
-     * @param array $input
+     * @param array $data
      * @return Model
      */
-    public function create(array $input);
+    public function create(array $data);
 
     /**
      * @param int $id
-     * @param array $input
+     * @param array $data
      * @return Model
      */
-    public function update($id, array $input);
+    public function update($id, array $data);
 
     /**
      * @param int $id
