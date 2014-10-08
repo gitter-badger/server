@@ -111,11 +111,13 @@ class UsersCest
 			'username' => 'someuser',
 			'name_first' => 'some',
 			'name_last' => 'name',
-			'active' => false,
+			'active' => 0,
 			'quota' => 1048576
 		];
 
 		$I->sendPUT($this->resource . '/1', $user);
+
+        $user['active'] = false;
 
 		$I->seeResponseCodeIs(200);
 		$I->seeResponseContainsJson($user);
@@ -125,7 +127,7 @@ class UsersCest
 	{
 		$I->authenticate($I);
 
-		$I->sendPUT($this->resource . '/123', ['email' => 'somemail@phototresor.org']);
+		$I->sendPUT($this->resource . '/123', ['email' => 'somemail@phototresor.org', 'username' => 'asdf', 'active' => 1]);
 
 		$I->seeResponseCodeIs(404);
 		$I->seeErrorMessageIs($I, 'User not found.');
