@@ -2,7 +2,7 @@
 namespace PhotoTresor\Services;
 
 use PhotoTresor\Repositories\UsersRepository;
-use PhotoTresor\Validators\UserValidator;
+use PhotoTresor\Validators\UsersValidator;
 
 class UsersService extends AbstractService {
 
@@ -11,10 +11,9 @@ class UsersService extends AbstractService {
      */
     protected $repository;
 
-    public function __construct(UsersRepository $userRepository, UserValidator $validator)
+    public function __construct(UsersRepository $userRepository, UsersValidator $userValidator)
     {
-        $this->repository = $userRepository;
-        $this->validator = $validator;
+        parent::__construct($userRepository, $userValidator);
     }
 
 }

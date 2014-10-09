@@ -2,17 +2,15 @@
 namespace PhotoTresor\Services;
 
 use PhotoTresor\Repositories\PhotosRepository;
+use PhotoTresor\Repositories\RepositoryInterface;
+use PhotoTresor\Validators\PhotosValidator;
+use PhotoTresor\Validators\ValidatorInterface;
 
 class PhotosService extends AbstractService {
 
-    /**
-     * @var PhotosRepository
-     */
-    protected $repository;
-
-    public function __construct(PhotosRepository $repository)
+    public function __construct(PhotosRepository $photosRepository, PhotosValidator $photosValidator)
     {
-        $this->repository = $repository;
+        parent::__construct($photosRepository, $photosValidator);
     }
 
     public function allWithUsers()
