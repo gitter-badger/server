@@ -3,7 +3,7 @@ namespace PhotoTresor\Repositories;
 
 use Photo;
 
-class PhotoRepository extends AbstractRepository {
+class PhotosRepository extends AbstractRepository {
 
     protected $model;
 

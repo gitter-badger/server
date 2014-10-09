@@ -1,16 +1,16 @@
 <?php
 namespace PhotoTresor\Services;
 
-use PhotoTresor\Repositories\PhotoRepository;
+use PhotoTresor\Repositories\PhotosRepository;
 
 class PhotoService extends AbstractService {
 
     /**
-     * @var PhotoRepository
+     * @var PhotosRepository
      */
     protected $repository;
 
-    public function __construct(PhotoRepository $repository)
+    public function __construct(PhotosRepository $repository)
     {
         $this->repository = $repository;
     }

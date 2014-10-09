@@ -1,6 +1,6 @@
 <?php
 
-use PhotoTresor\Repositories\PhotoRepository;
+use PhotoTresor\Repositories\PhotosRepository;
 
 class PhotoRepositoryTest extends TestCase
 {
@@ -12,7 +12,7 @@ class PhotoRepositoryTest extends TestCase
         parent::setUp();
 
         $this->model = Mockery::mock('Photo');
-        $this->repository = new PhotoRepository($this->model);
+        $this->repository = new PhotosRepository($this->model);
     }
 
     public function testAllWithUsers()
