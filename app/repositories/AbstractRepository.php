@@ -1,6 +1,8 @@
 <?php
 namespace PhotoTresor\Repositories;
 
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+
 abstract class AbstractRepository implements RepositoryInterface {
 
     /**
@@ -14,6 +16,7 @@ abstract class AbstractRepository implements RepositoryInterface {
     /**
      * @param int $id
      * @return Model
+     * @throws ModelNotFoundException
      */
     public function find($id)
     {
@@ -33,6 +36,7 @@ abstract class AbstractRepository implements RepositoryInterface {
      * @param int $id
      * @param array $input
      * @return Model
+     * @throws ModelNotFoundException
      */
     public function update($id, array $input)
     {
@@ -46,6 +50,7 @@ abstract class AbstractRepository implements RepositoryInterface {
     /**
      * @param int $id
      * @return boolean
+     * @throws ModelNotFoundException
      */
     public function delete($id)
     {
