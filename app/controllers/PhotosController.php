@@ -3,13 +3,13 @@
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Log;
-use PhotoTresor\Services\PhotoService;
+use PhotoTresor\Services\PhotosService;
 
 class PhotosController extends \BaseController {
 
     protected $photoService;
 
-    function __construct(PhotoService $photoService) {
+    function __construct(PhotosService $photoService) {
         $this->beforeFilter('auth');
         $this->photoService = $photoService;
     }

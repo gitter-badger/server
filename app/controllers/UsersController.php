@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use PhotoTresor\Services\UserService;
+use PhotoTresor\Services\UsersService;
 
 /**
  * Class UsersController
@@ -9,14 +9,14 @@ use PhotoTresor\Services\UserService;
 class UsersController extends BaseController {
 
     /**
-     * @var UserService
+     * @var UsersService
      */
     protected $userService;
 
     /**
-     * @param UserService $userService
+     * @param UsersService $userService
      */
-    public function __construct(UserService $userService)
+    public function __construct(UsersService $userService)
     {
         $this->beforeFilter('auth');
 

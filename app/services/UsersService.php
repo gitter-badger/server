@@ -5,7 +5,7 @@ use PhotoTresor\Repositories\UsersRepository;
 use PhotoTresor\Validators\AbstractValidator;
 use PhotoTresor\Validators\UserValidator;
 
-class UserService extends AbstractService {
+class UsersService extends AbstractService {
 
     /**
      * @var UsersRepository
