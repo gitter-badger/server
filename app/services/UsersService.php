@@ -2,7 +2,6 @@
 namespace PhotoTresor\Services;
 
 use PhotoTresor\Repositories\UsersRepository;
-use PhotoTresor\Validators\AbstractValidator;
 use PhotoTresor\Validators\UserValidator;
 
 class UsersService extends AbstractService {
