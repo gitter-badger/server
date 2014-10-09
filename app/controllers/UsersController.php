@@ -2,7 +2,6 @@
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use PhotoTresor\Services\UserService;
-use PhotoTresor\Validators\ValidatorException;
 
 /**
  * Class UsersController
