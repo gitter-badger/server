@@ -93,6 +93,27 @@ class PhotosCest
         $I->seeResponseCodeIs(200);
         $I->dontSeeInDatabase('photos', ['id' => 1]);
         $I->dontSeeFileFound('tests/_photos/1/c02c99ac35c3b6f9c698ad093dd61148f0f7bce4.jpg');
+    }
 
+    public function DeleteNonExistingPhotoFromDatabase(AcceptanceTester $I)
+    {
+        $I->authenticate($I);
+
+        $I->sendDELETE($this->resource . '/1234');
+
+        $I->seeResponseCodeIs(404);
+        $I->seeResponseContainsJson(['error' => ['message' => 'Photo not found.']]);
+    }
+
+    public function DeleteNonExistingPhotoFromFilesystem(AcceptanceTester $I)
+    {
+        $I->authenticate($I);
+
+        $I->haveInDatabase('photos', ['id' => 1234, 'user_id' => 1, 'file_sha1' => '6cef2ab8a66easdfa0c8c1c57028afcf7fb77b0d']);
+
+        $I->sendDELETE($this->resource . '/1234');
+
+        $I->seeResponseCodeIs(404);
+        $I->seeResponseContainsJson(['error' => ['message' => 'Photo could not be deleted.']]);
     }
 }
