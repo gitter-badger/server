@@ -3,7 +3,7 @@ namespace PhotoTresor\Validators;
 
 use Illuminate\Validation\Factory;
 
-class AbstractValidator implements ValidatorInterface {
+class AbstractValidation implements ValidationInterface {
 
     protected $validator;
 
@@ -15,7 +15,7 @@ class AbstractValidator implements ValidatorInterface {
     /**
      * @param array $data
      * @return bool
-     * @throws ValidatorException
+     * @throws ValidationException
      */
     public function validate(array $data)
     {
@@ -23,7 +23,7 @@ class AbstractValidator implements ValidatorInterface {
 
         if($validator->fails())
         {
-            throw (new ValidatorException('Data is not valid.'))->setErrors($validator->messages());
+            throw (new ValidationException('Data is not valid.'))->setErrors($validator->messages());
         }
 
         return true;

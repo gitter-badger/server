@@ -12,7 +12,7 @@ class AbstractServiceTest extends TestCase
         parent::setUp();
 
         $this->repository = Mockery::mock('PhotoTresor\Repositories\RepositoryInterface');
-        $this->validator = Mockery::mock('PhotoTresor\Validators\ValidatorInterface');
+        $this->validator = Mockery::mock('PhotoTresor\Validators\ValidationInterface');
         $this->service = new AbstractServiceDummy($this->repository, $this->validator);
 
         $this->model = Mockery::mock('Model');

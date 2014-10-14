@@ -1,7 +1,7 @@
 <?php
 namespace PhotoTresor\Validators;
 
-class PhotosValidator extends AbstractValidator {
+class PhotoValidation extends AbstractValidation {
 
     protected $rules = [
         'id' => 'integer',

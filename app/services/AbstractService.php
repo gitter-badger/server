@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\MessageBag;
 use PhotoTresor\Repositories\RepositoryInterface;
-use PhotoTresor\Validators\ValidatorException;
-use PhotoTresor\Validators\ValidatorInterface;
+use PhotoTresor\Validators\ValidationException;
+use PhotoTresor\Validators\ValidationInterface;
 
 abstract class AbstractService implements ServiceInterface {
 
@@ -19,11 +19,11 @@ abstract class AbstractService implements ServiceInterface {
     protected $repository;
 
     /**
-     * @var ValidatorInterface
+     * @var ValidationInterface
      */
     protected $validator;
 
-    public function __construct(RepositoryInterface $repository, ValidatorInterface $validator)
+    public function __construct(RepositoryInterface $repository, ValidationInterface $validator)
     {
         $this->repository = $repository;
         $this->validator = $validator;
@@ -52,7 +52,7 @@ abstract class AbstractService implements ServiceInterface {
      * @param array $data
      * @return Model
      *
-     * @throws ValidatorException
+     * @throws ValidationException
      */
     public function create(array $data)
     {
@@ -67,7 +67,7 @@ abstract class AbstractService implements ServiceInterface {
      * @return Model
      *
      * @throws ModelNotFoundException
-     * @throws ValidatorException
+     * @throws ValidationException
      */
     public function update($id, array $data)
     {

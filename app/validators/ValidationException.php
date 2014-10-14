@@ -4,7 +4,7 @@ namespace PhotoTresor\Validators;
 use Exception;
 use Illuminate\Support\MessageBag;
 
-class ValidatorException extends Exception {
+class ValidationException extends Exception {
 
     /**
      * @var array

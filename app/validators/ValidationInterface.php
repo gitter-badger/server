@@ -1,13 +1,13 @@
 <?php
 namespace PhotoTresor\Validators;
 
-interface ValidatorInterface {
+interface ValidationInterface {
 
     /**
      * @param array $data
      * @return boolean
      *
-     * @throws ValidatorException
+     * @throws ValidationException
      */
     public function validate(array $data);
 

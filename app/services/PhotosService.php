@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Filesystem\FileNotFoundException;
 use Illuminate\Filesystem\Filesystem;
 use PhotoTresor\Repositories\PhotosRepository;
-use PhotoTresor\Validators\PhotosValidator;
+use PhotoTresor\Validators\PhotoValidation;
 
 class PhotosService extends AbstractService {
 
@@ -21,7 +21,7 @@ class PhotosService extends AbstractService {
 
     public function __construct(
         PhotosRepository $photosRepository,
-        PhotosValidator $photosValidator,
+        PhotoValidation $photosValidator,
         ConfigRepository $config,
         Filesystem $filesystem
     )

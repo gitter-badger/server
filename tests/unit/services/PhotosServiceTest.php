@@ -16,7 +16,7 @@ class PhotosServiceTest extends TestCase
         parent::setUp();
 
         $this->repository = Mockery::mock('PhotoTresor\Repositories\PhotosRepository');
-        $this->validator = Mockery::mock('PhotoTresor\Validators\PhotosValidator');
+        $this->validator = Mockery::mock('PhotoTresor\Validators\PhotoValidation');
         $this->config = Mockery::mock('Illuminate\Config\Repository');
         $this->filesystem = Mockery::mock('Illuminate\Filesystem\Filesystem');
 
